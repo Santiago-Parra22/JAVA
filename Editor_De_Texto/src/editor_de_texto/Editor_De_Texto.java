@@ -15,39 +15,45 @@ import javax.swing.*;
  */
 public class Editor_De_Texto extends JFrame implements ActionListener {
     
-    JTextArea word;
-    JPanel p;
+    
    
     Editor_De_Texto(){
-        
-    p = new JPanel();
-
-    p.setLayout(null);
-    p.setBackground(Color.gray);
-   
-    add (p);
-    
-      
-    word= new JTextArea();
-    
-    word.setLineWrap(true);
-    JScrollPane scroll = new JScrollPane(word);
-    scroll.setBounds(200,30,900,650);
-    p.add(scroll);
-    
-    
-    
-    
-    
-    
+     
+    setBounds(300,300,300,300);
+    setTitle("Editor de texto");
     setVisible(true);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
-    
-  
-    
-    
-    
+    Herramientas p = new Herramientas();
+    add(p);
     }
+    
+    public class Herramientas extends JPanel{ 
+    Herramientas(){
+    
+        //area de texto
+        panel=new JTabbedPane();
+       
+        //Cierre de area de texto
+        
+        //Los componentes son visibles
+        crear_panel(); 
+        add(panel);
+    }
+    
+    //crea un panel con un area de texto
+    public void crear_panel(){
+     ventana = new JPanel();
+     txt= new JTextPane();
+     ventana.add(txt);
+     panel.addTab("untitled",ventana);
+    }
+        private JTabbedPane panel; 
+        private JPanel ventana;
+        private JTextPane txt;
+    }
+    
+    
+    
     public static void main(String[] args) {
        new Editor_De_Texto();
     }

@@ -16,16 +16,16 @@ import javax.swing.*;
 public class Editor_De_Texto extends JFrame implements ActionListener {
     
     
-   
+    
     Editor_De_Texto(){
-     
+     // se crea el marco 
     setBounds(300,300,300,300);
     setTitle("Editor de texto");
     setVisible(true);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     Herramientas p = new Herramientas();
     add(p);
-    }
+    }   
     
     public class Herramientas extends JPanel{ 
     Herramientas(){
@@ -52,7 +52,24 @@ public class Editor_De_Texto extends JFrame implements ActionListener {
         private JTextPane txt;
     }
     
+    // se crea la barra que contiene los menus
+    public void menu(){
+    JMenuBar barra;
+    JMenu menu1,menu2,menu3;
+    JMenuItem item1,item2,item3;
     
+    //inicializamos nuestro menu
+    
+    barra = new JMenuBar();
+    setJMenuBar(barra);
+    
+    // creamos nuestro primer menu y lo agregamos al jframe
+    menu1= new JMenu("opciones");
+    barra.add(menu1);
+    
+    Herramientas p = new Herramientas();
+    p.panel.add(barra);
+    } 
     
     public static void main(String[] args) {
        new Editor_De_Texto();

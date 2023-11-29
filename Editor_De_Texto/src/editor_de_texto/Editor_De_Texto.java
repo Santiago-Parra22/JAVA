@@ -13,7 +13,7 @@ import javax.swing.*;
  *
  * @author Santiago
  */
-public class Editor_De_Texto extends JFrame implements ActionListener {
+public class Editor_De_Texto extends JFrame {
     
     
     
@@ -23,9 +23,13 @@ public class Editor_De_Texto extends JFrame implements ActionListener {
     setTitle("Editor de texto");
     setVisible(true);
     setDefaultCloseOperation(EXIT_ON_CLOSE);
+    // se agrega el metodo de los menus y se puede visualizar
+     new menu();             
     Herramientas p = new Herramientas();
     add(p);
     }   
+
+  
     
     public class Herramientas extends JPanel{ 
     Herramientas(){
@@ -34,26 +38,28 @@ public class Editor_De_Texto extends JFrame implements ActionListener {
         panel=new JTabbedPane();
        
         //Cierre de area de texto
-        
         //Los componentes son visibles
-        crear_panel(); 
+        crear_panel cp = new crear_panel(); 
         add(panel);
-    }
+    }}
     
     //crea un panel con un area de texto
-    public void crear_panel(){
+    public class crear_panel{
+       public crear_panel(){
      ventana = new JPanel();
      txt= new JTextPane();
      ventana.add(txt);
      panel.addTab("untitled",ventana);
     }
+    }
         private JTabbedPane panel; 
         private JPanel ventana;
         private JTextPane txt;
-    }
+    
     
     // se crea la barra que contiene los menus
-    public void menu(){
+    public class menu {
+        menu (){ 
     JMenuBar barra;
     JMenu menu1,menu2,menu3;
     JMenuItem item1,item2,item3;
@@ -63,21 +69,34 @@ public class Editor_De_Texto extends JFrame implements ActionListener {
     barra = new JMenuBar();
     setJMenuBar(barra);
     
-    // creamos nuestro primer menu y lo agregamos al jframe
+    // creamos nuestro primer menu 
     menu1= new JMenu("opciones");
-    barra.add(menu1);
+    menu2= new JMenu("archivo");
     
-    Herramientas p = new Herramientas();
-    p.panel.add(barra);
+    barra.add(menu1);
+    barra.add(menu2);
+     
+    item1= new JMenuItem("Nuevo Archivo");
+    item1.addActionListener(new gestorMenu() );
+    menu1.add(item1);
+        }
     } 
     
     public static void main(String[] args) {
        new Editor_De_Texto();
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       
     }
     
+    public class gestorMenu  implements ActionListener {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+       if ("Nuevo Archivo".equals(e.getActionCommand())){
+            new crear_panel();
+           System.out.println("nueva ventana"); 
+           
+                   
+          
+       }
+    }
+    }
 }

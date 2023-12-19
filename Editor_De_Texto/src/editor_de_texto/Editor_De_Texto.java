@@ -61,8 +61,8 @@ public class Editor_De_Texto extends JFrame {
     public class menu {
         menu (){ 
     JMenuBar barra;
-    JMenu menu1,menu2,menu3;
-    JMenuItem item1,item2,item3;
+    JMenu menu1,menu2,menu3,menu4;
+    JMenuItem item1,item12,item13,item14,item2,item21,item22,item23,item24,item25;
     
     //inicializamos nuestro menu
     
@@ -70,15 +70,60 @@ public class Editor_De_Texto extends JFrame {
     setJMenuBar(barra);
     
     // creamos nuestro primer menu 
-    menu1= new JMenu("opciones");
-    menu2= new JMenu("archivo");
+    menu1= new JMenu("Archivo");
+    menu2= new JMenu("Editar");
+    menu3= new JMenu("Seleccionar");
+    menu4= new JMenu("Ver");
     
     barra.add(menu1);
     barra.add(menu2);
-     
+    barra.add(menu3);
+    barra.add(menu4);
+    
+    //menu 1
     item1= new JMenuItem("Nuevo Archivo");
     item1.addActionListener(new gestorMenu() );
     menu1.add(item1);
+    //menu 1
+    item12= new JMenuItem("Abrir Archivo");
+    item12.addActionListener(new gestorMenu());
+    menu1.add(item12);
+    menu1.add(new JSeparator());
+    //menu 1
+    item13= new JMenuItem("Guardar");
+    item13.addActionListener(new gestorMenu() );
+    menu1.add(item13);
+    //menu 1
+    item14= new JMenuItem("Guardar Como");
+    item14.addActionListener(new gestorMenu());
+    menu1.add(item14);
+    
+    //menu 2
+    item2= new JMenuItem("Deshacer");
+    item2.addActionListener(new gestorMenu() );
+    menu2.add(item2);
+      //menu 2
+    item21= new JMenuItem("Rehacer");
+    item21.addActionListener(new gestorMenu() );
+    menu2.add(item21);
+    menu2.add(new JSeparator());
+    //menu 2
+    item22= new JMenuItem("Cortar");
+    item22.addActionListener(new gestorMenu() );
+    menu2.add(item22);
+      //menu 2
+    item23= new JMenuItem("Copiar");
+    item23.addActionListener(new gestorMenu());
+    menu2.add(item23);
+    menu2.add(new JSeparator());
+    //menu 2
+    item24= new JMenuItem("Pegar");
+    item24.addActionListener(new gestorMenu() );
+    menu2.add(item24);
+      //menu 2
+    item25= new JMenuItem("Buscar");
+    item25.addActionListener(new gestorMenu() );
+    menu2.add(item25);
         }
     } 
     
@@ -91,11 +136,21 @@ public class Editor_De_Texto extends JFrame {
     @Override
     public void actionPerformed(ActionEvent e) {
        if ("Nuevo Archivo".equals(e.getActionCommand())){
-            new crear_panel();
-           System.out.println("nueva ventana"); 
-           
-                   
-          
+            crear_panel cp=new crear_panel();
+            
+           System.out.println("nueva ventana"); }
+       
+       if("Abrir Archivo".equals(e.getActionCommand())){
+       
+           System.out.println("Abrir Archivo");
+       }
+        if ("Guardar".equals(e.getActionCommand())){
+            System.out.println("Guardado con exito");
+             }
+       
+       if("Guardar Como".equals(e.getActionCommand())){
+       
+           System.out.println("Guardado en x");
        }
     }
     }

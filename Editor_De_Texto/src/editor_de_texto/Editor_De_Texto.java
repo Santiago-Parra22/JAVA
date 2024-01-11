@@ -5,6 +5,7 @@
 package editor_de_texto;
 
 import java.awt.*;
+import static java.awt.Color.white;
 import java.awt.event.*;
 
 import javax.swing.*;
@@ -61,8 +62,8 @@ public class Editor_De_Texto extends JFrame {
     public class menu {
         menu (){ 
     JMenuBar barra;
-    JMenu menu1,menu2,menu3,menu4;
-    JMenuItem item1,item12,item13,item14,item2,item21,item22,item23,item24,item25;
+    JMenu menu1,menu2,menu3,menu4,menu41;
+    JMenuItem item1,item12,item13,item14,item2,item21,item22,item23,item24,item25,item3, item4, item41,item411;
     
     //inicializamos nuestro menu
     
@@ -124,6 +125,27 @@ public class Editor_De_Texto extends JFrame {
     item25= new JMenuItem("Buscar");
     item25.addActionListener(new gestorMenu() );
     menu2.add(item25);
+    
+    //Menu 3
+    item3= new JMenuItem("Selecionar todo");
+    item3.addActionListener(new gestorMenu());
+    menu3.add(item3);
+    
+    //menu 4
+    
+    item4= new JMenuItem("Numeración");
+    item4.addActionListener(new gestorMenu() );
+    menu4.add(item4);
+    
+    //menu 4
+    menu41= new JMenu ("Apariencia");
+    menu4.add(menu41);   
+    item411= new JMenuItem("Normal");
+    item411.addActionListener(new gestorMenu());
+    menu41.add(item411);
+    item41= new JMenuItem("Dark");
+    item41.addActionListener(new gestorMenu());
+    menu41.add(item41);
         }
     } 
     
@@ -152,6 +174,44 @@ public class Editor_De_Texto extends JFrame {
        
            System.out.println("Guardado en x");
        }
+       if ("Deshacer".equals(e.getActionCommand())){
+           
+           System.out.println("Se ha deshecho con exito"); }
+       
+       if("Rehacer".equals(e.getActionCommand())){
+       
+           System.out.println("Se adelanto con exito");
+       }
+        if ("Cortar".equals(e.getActionCommand())){
+            System.out.println("Cortado con exito");
+             }
+       
+       if("Copiar".equals(e.getActionCommand())){
+       
+           System.out.println("Copiado con exito");
+       }
+       if ("Pegar".equals(e.getActionCommand())){
+            System.out.println("Pegado con exito");
+             }
+       
+       if("Buscar".equals(e.getActionCommand())){
+       
+           System.out.println("Buscado con exito");
+       }
+       if("Dark".equals(e.getActionCommand())){
+       
+
+            txt.setBackground(Color.black);
+            txt.setForeground(Color.white);
+           
+       }
+         if("Normal".equals(e.getActionCommand())){
+       
+
+            txt.setBackground(Color.white);
+            txt.setForeground(Color.black);
+         }
+       
     }
     }
 }
